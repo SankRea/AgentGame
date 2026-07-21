@@ -1,0 +1,38 @@
+[
+  {
+    "id": "true_ascension",
+    "name": "真正飞升",
+    "description": "不借他人肉身，以功德与神识渡过天门。",
+    "priority": 100,
+    "conditions": [
+      { "variable": "karma", "operator": "gte", "value": 20 },
+      { "variable": "sanity", "operator": "gte", "value": 70 },
+      { "variable": "accepted_evil_rite", "operator": "equals", "value": false }
+    ],
+    "dialogueId": "ending_true_ascension"
+  },
+  {
+    "id": "corpse_immortal",
+    "name": "尸解成仙",
+    "description": "舍弃本来面目，成为穿行于尸身之间的假仙。",
+    "priority": 90,
+    "conditions": [{ "variable": "accepted_evil_rite", "operator": "equals", "value": true }],
+    "dialogueId": "ending_corpse_immortal"
+  },
+  {
+    "id": "vengeful_ghost",
+    "name": "化为厉鬼",
+    "description": "肉身腐朽，神识被心魔吞没。",
+    "priority": 110,
+    "conditions": [{ "variable": "sanity", "operator": "lte", "value": 20 }],
+    "dialogueId": "ending_vengeful_ghost"
+  },
+  {
+    "id": "truth_revealed",
+    "name": "发现真相",
+    "description": "集齐尸解残卷，揭穿青玄真人百年的飞升骗局。",
+    "priority": 120,
+    "conditions": [{ "variable": "all_fragments", "operator": "equals", "value": true }],
+    "dialogueId": "ending_truth_revealed"
+  }
+]

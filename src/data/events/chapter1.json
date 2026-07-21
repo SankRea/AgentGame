@@ -1,0 +1,29 @@
+[
+  {
+    "id": "coffin_knock_event",
+    "map": "qingxuan_temple",
+    "type": "dialogue",
+    "trigger": "area",
+    "dialogueId": "coffin_knock",
+    "speaker": "？？？",
+    "area": { "x": 830, "y": 390, "width": 340, "height": 340 },
+    "once": true,
+    "effects": [{ "variable": "sanity", "operation": "subtract", "value": 40 }]
+  },
+  {
+    "id": "nameless_stele",
+    "map": "qingxuan_temple",
+    "type": "dialogue",
+    "trigger": "investigate",
+    "dialogueId": "fragment_found",
+    "speaker": "无名碑",
+    "position": { "x": 900, "y": 590 },
+    "radius": 72,
+    "once": true,
+    "rewards": ["corpse_scroll_fragment_1"],
+    "effects": [
+      { "variable": "spiritualSense", "operation": "add", "value": 10 },
+      { "variable": "sanity", "operation": "subtract", "value": 8 }
+    ]
+  }
+]

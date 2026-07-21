@@ -1,0 +1,124 @@
+[
+  {
+    "id": "grave_keeper_intro",
+    "start": "opening",
+    "nodes": [
+      {
+        "id": "opening",
+        "speaker": "守墓老人",
+        "text": "年轻人，你来求仙？青玄观已经一百年没有活人上山了。",
+        "choices": [
+          { "text": "请告诉我成仙之法。", "next": "ask_method" },
+          { "text": "这里为何有这么多棺材？", "next": "ask_coffins" },
+          { "text": "你也是仙人吗？", "next": "ask_identity" },
+          {
+            "text": "我听见……你的胸腔里也有人在敲。",
+            "next": "hidden_truth",
+            "conditions": [{ "variable": "sanity", "operator": "lte", "value": 65 }],
+            "actions": ["help_ghost"],
+            "effects": [
+              { "variable": "spiritualSense", "operation": "add", "value": 5 }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ask_method",
+        "speaker": "守墓老人",
+        "text": "《尸解秘录》说，肉身是锁，棺椁是门。可门后站着的是仙，还是穿着你皮囊的东西？",
+        "choices": [
+          {
+            "text": "若能长生，舍弃肉身又何妨。",
+            "next": "evil_warning",
+            "actions": ["accept_body_theft"],
+            "effects": [
+              { "variable": "accepted_evil_rite", "operation": "set", "value": true }
+            ]
+          },
+          {
+            "text": "夺舍换魂绝非仙法。",
+            "next": "upright_warning",
+            "actions": ["reject_body_theft"]
+          }
+        ]
+      },
+      {
+        "id": "ask_coffins",
+        "speaker": "守墓老人",
+        "text": "每一口棺材里，都躺着一个来青玄观求长生的人。奇怪的是，尸首少了一具，牌位却多了一块。",
+        "next": "final_warning"
+      },
+      {
+        "id": "ask_identity",
+        "speaker": "守墓老人",
+        "text": "老人咧嘴笑了笑。你这才看见，他脚下没有影子。",
+        "next": "final_warning",
+        "onEnterEffects": [{ "variable": "sanity", "operation": "subtract", "value": 8 }]
+      },
+      {
+        "id": "hidden_truth",
+        "speaker": "守墓老人",
+        "text": "嘘。棺中那个才是我。现在与你说话的，只是青玄真人借来守门的一层皮。藏经阁铜镜后面，有他的第一张脸。",
+        "next": "hidden_end",
+        "onEnterEffects": [{ "variable": "helped_ghost", "operation": "set", "value": true }]
+      },
+      {
+        "id": "evil_warning",
+        "speaker": "守墓老人",
+        "text": "那你很快就会见到真人。他最喜欢自愿躺进棺材的人。"
+      },
+      {
+        "id": "upright_warning",
+        "speaker": "守墓老人",
+        "text": "记住你今日说过的话。等肉身腐朽时，人最容易把邪法叫作仙缘。"
+      },
+      {
+        "id": "final_warning",
+        "speaker": "守墓老人",
+        "text": "月上中天之后，不要回应观中叫你名字的人。尤其当那个声音来自棺材里。"
+      },
+      {
+        "id": "hidden_end",
+        "speaker": "旁白",
+        "text": "老人说完便不再动了。远处传来木头被指甲缓慢刮过的声音。"
+      }
+    ]
+  },
+  {
+    "id": "coffin_knock",
+    "speaker": "？？？",
+    "text": [
+      "咚。",
+      "咚、咚。声音来自坟地最里面那口没有墓碑的棺材。",
+      "棺中有人用与你相同的声音，轻轻叫出了你的名字。"
+    ]
+  },
+  {
+    "id": "fragment_found",
+    "speaker": "《尸解秘录·残页》",
+    "text": [
+      "凡人欲脱肉身，需先斩七情，再断六欲。",
+      "页脚另有一行被血浸透的小字：所谓尸解，不过借尸还魂。"
+    ]
+  },
+  {
+    "id": "ending_true_ascension",
+    "speaker": "结局 · 真正飞升",
+    "text": ["你没有躺进任何一口棺材。天光落下时，山中第一次没有传来敲击声。"]
+  },
+  {
+    "id": "ending_corpse_immortal",
+    "speaker": "结局 · 尸解成仙",
+    "text": ["你从棺中坐起，却发现镜中的脸属于另一个求仙者。青玄真人在你的喉咙里笑了。"]
+  },
+  {
+    "id": "ending_vengeful_ghost",
+    "speaker": "结局 · 化为厉鬼",
+    "text": ["你的肉身已经腐朽。神识仍停留于世，却再也想不起自己为何求仙。"]
+  },
+  {
+    "id": "ending_truth_revealed",
+    "speaker": "结局 · 发现真相",
+    "text": ["残卷拼合成完整的人皮经书。所谓百年飞升，只是一具仙躯换过百次主人。"]
+  }
+]

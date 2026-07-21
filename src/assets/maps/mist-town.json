@@ -1,0 +1,220 @@
+{
+  "compressionlevel": -1,
+  "height": 17,
+  "infinite": false,
+  "layers": [
+    {
+      "data": [
+        1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+        1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+        1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+        1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+        1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+        1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+        1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,
+        1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,
+        1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,
+        1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,
+        1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,
+        1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,
+        2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+        2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+        2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+        1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,
+        1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1
+      ],
+      "height": 17,
+      "id": 1,
+      "name": "Ground",
+      "opacity": 1,
+      "type": "tilelayer",
+      "visible": true,
+      "width": 30,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "data": [
+        3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,
+        3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,
+        3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,
+        3,0,0,3,3,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3,3,0,0,0,3,
+        3,0,0,3,3,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3,3,0,0,0,3,
+        3,0,0,3,3,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3,3,0,0,0,3,
+        3,0,0,3,3,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3,3,0,0,0,3,
+        3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,
+        3,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,5,5,5,0,0,0,3,
+        3,0,0,3,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,5,0,0,0,3,
+        3,0,0,3,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,5,0,0,0,3,
+        3,0,0,3,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,
+        3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,
+        3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,
+        3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,
+        3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,
+        3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3
+      ],
+      "height": 17,
+      "id": 2,
+      "name": "Collision",
+      "opacity": 1,
+      "type": "tilelayer",
+      "visible": true,
+      "width": 30,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "draworder": "topdown",
+      "id": 3,
+      "name": "Events",
+      "objects": [
+        {
+          "height": 140,
+          "id": 1,
+          "name": "old_tree_zone",
+          "properties": [
+            { "name": "definitionId", "type": "string", "value": "old_tree" },
+            { "name": "trigger", "type": "string", "value": "area" }
+          ],
+          "rotation": 0,
+          "type": "story_event",
+          "visible": true,
+          "width": 140,
+          "x": 690,
+          "y": 224
+        },
+        {
+          "height": 0,
+          "id": 2,
+          "name": "dry_well_point",
+          "point": true,
+          "properties": [
+            { "name": "definitionId", "type": "string", "value": "dry_well" },
+            { "name": "trigger", "type": "string", "value": "investigate" },
+            { "name": "radius", "type": "int", "value": 76 }
+          ],
+          "rotation": 0,
+          "type": "story_event",
+          "visible": true,
+          "width": 0,
+          "x": 480,
+          "y": 288
+        },
+        {
+          "height": 96,
+          "id": 3,
+          "name": "east_gate",
+          "properties": [
+            { "name": "targetMap", "type": "string", "value": "moon_forest" },
+            { "name": "targetSpawn", "type": "string", "value": "from_town" }
+          ],
+          "rotation": 0,
+          "type": "map_transition",
+          "visible": true,
+          "width": 48,
+          "x": 880,
+          "y": 384
+        }
+      ],
+      "opacity": 1,
+      "type": "objectgroup",
+      "visible": true,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "draworder": "topdown",
+      "id": 4,
+      "name": "Objects",
+      "objects": [
+        { "height": 0, "id": 4, "name": "start", "point": true, "rotation": 0, "type": "spawn", "visible": true, "width": 0, "x": 480, "y": 448 },
+        { "height": 0, "id": 5, "name": "from_forest", "point": true, "rotation": 0, "type": "spawn", "visible": true, "width": 0, "x": 848, "y": 432 },
+        {
+          "height": 22,
+          "id": 6,
+          "name": "old_man",
+          "properties": [
+            { "name": "id", "type": "string", "value": "old_man" },
+            { "name": "displayName", "type": "string", "value": "守树老人" },
+            { "name": "dialogueId", "type": "string", "value": "old_man_intro" },
+            { "name": "texture", "type": "string", "value": "characters" },
+            { "name": "animation", "type": "string", "value": "npc-old-man-idle" }
+          ],
+          "rotation": 0,
+          "type": "npc",
+          "visible": true,
+          "width": 16,
+          "x": 610,
+          "y": 340
+        },
+        {
+          "height": 0, "id": 7, "name": "old_tree", "point": true,
+          "properties": [
+            { "name": "animation", "type": "string", "value": "environment-tree" },
+            { "name": "scale", "type": "float", "value": 0.38 }
+          ],
+          "rotation": 0, "type": "environment", "visible": true, "width": 0, "x": 768, "y": 330
+        },
+        {
+          "height": 0, "id": 8, "name": "magic_well", "point": true,
+          "properties": [
+            { "name": "animation", "type": "string", "value": "environment-well" },
+            { "name": "scale", "type": "float", "value": 0.38 }
+          ],
+          "rotation": 0, "type": "environment", "visible": true, "width": 0, "x": 480, "y": 314
+        },
+        {
+          "height": 0, "id": 9, "name": "road_lantern", "point": true,
+          "properties": [
+            { "name": "animation", "type": "string", "value": "environment-lantern" },
+            { "name": "scale", "type": "float", "value": 0.3 }
+          ],
+          "rotation": 0, "type": "environment", "visible": true, "width": 0, "x": 560, "y": 388
+        },
+        {
+          "height": 0, "id": 10, "name": "town_flowers", "point": true,
+          "properties": [
+            { "name": "animation", "type": "string", "value": "environment-flowers" },
+            { "name": "scale", "type": "float", "value": 0.28 }
+          ],
+          "rotation": 0, "type": "environment", "visible": true, "width": 0, "x": 340, "y": 390
+        }
+      ],
+      "opacity": 1,
+      "type": "objectgroup",
+      "visible": true,
+      "x": 0,
+      "y": 0
+    }
+  ],
+  "nextlayerid": 5,
+  "nextobjectid": 11,
+  "orientation": "orthogonal",
+  "renderorder": "right-down",
+  "tiledversion": "1.10.2",
+  "tileheight": 32,
+  "tilesets": [
+    {
+      "columns": 5,
+      "firstgid": 1,
+      "image": "../sprites/terrain-tiles.png",
+      "imageheight": 32,
+      "imagewidth": 160,
+      "margin": 0,
+      "name": "terrain",
+      "spacing": 0,
+      "tilecount": 5,
+      "tileheight": 32,
+      "tiles": [
+        { "id": 2, "properties": [{ "name": "collides", "type": "bool", "value": true }] },
+        { "id": 3, "properties": [{ "name": "collides", "type": "bool", "value": true }] },
+        { "id": 4, "properties": [{ "name": "collides", "type": "bool", "value": true }] }
+      ],
+      "tilewidth": 32
+    }
+  ],
+  "tilewidth": 32,
+  "type": "map",
+  "version": "1.10",
+  "width": 30
+}

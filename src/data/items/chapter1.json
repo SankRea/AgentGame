@@ -1,0 +1,24 @@
+[
+  {
+    "id": "corpse_scroll_fragment_1",
+    "name": "《尸解秘录》残页·一",
+    "description": "从无名碑后取出的残页，纸张摸起来像晒干的人皮。",
+    "type": "quest",
+    "icon": "yellow_talisman",
+    "stackable": false,
+    "maxStack": 1,
+    "lore": ["凡人欲脱肉身，需先斩七情，再断六欲。", "所谓尸解，不过借尸还魂。"]
+  },
+  {
+    "id": "grave_talisman",
+    "name": "镇尸黄符",
+    "description": "朱砂已经发黑，仍能暂时压住棺中之物。",
+    "type": "consumable",
+    "icon": "yellow_talisman",
+    "stackable": true,
+    "maxStack": 3,
+    "useEffects": [
+      { "variable": "sanity", "operation": "add", "value": 12 }
+    ]
+  }
+]

@@ -1,0 +1,21 @@
+[
+  {
+    "id": "first_knock",
+    "title": "棺中来客",
+    "description": "听见无名棺中的敲击声。",
+    "requirements": [{ "event": "story_event", "target": "coffin_knock_event", "count": 1 }]
+  },
+  {
+    "id": "forbidden_page",
+    "title": "残卷初现",
+    "description": "获得第一张尸解秘录残页。",
+    "requirements": [{ "event": "item_obtained", "target": "corpse_scroll_fragment_1", "count": 1 }]
+  },
+  {
+    "id": "see_the_hollow",
+    "title": "皮囊之下",
+    "description": "发现守墓老人的隐藏真相。",
+    "hidden": true,
+    "requirements": [{ "event": "dialogue_complete", "target": "grave_keeper_intro", "count": 1 }]
+  }
+]

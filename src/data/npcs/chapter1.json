@@ -1,0 +1,38 @@
+[
+  {
+    "id": "grave_keeper",
+    "map": "qingxuan_temple",
+    "name": "守墓老人",
+    "role": "知道尸解真相的守墓者",
+    "dialogueId": "grave_keeper_intro",
+    "texture": "characters",
+    "animation": "npc-old-man-idle",
+    "x": 805,
+    "y": 700,
+    "enabled": true
+  },
+  {
+    "id": "qingxuan_immortal",
+    "map": "scripture_library",
+    "name": "青玄真人",
+    "role": "表面慈祥、实际死去百年的飞升者",
+    "dialogueId": "qingxuan_reveal",
+    "enabled": false
+  },
+  {
+    "id": "moving_paper_effigy",
+    "map": "qingxuan_temple",
+    "name": "无言纸人",
+    "role": "每天都会改变位置的引魂纸人",
+    "dialogueId": "paper_silence",
+    "enabled": false
+  },
+  {
+    "id": "nameless_ghost",
+    "map": "corpse_chamber",
+    "name": "无名女鬼",
+    "role": "试图阻止下一次尸解仪式的亡魂",
+    "dialogueId": "ghost_request",
+    "enabled": false
+  }
+]
