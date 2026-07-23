@@ -4,75 +4,131 @@ import type { InventorySaveData } from './InventorySystem';
 import type { QuestSaveData } from './QuestSystem';
 import type { SerializedStoryState } from './StoryStateSystem';
 
+export interface GameSettings {
+  masterVolume: number;
+  environmentVolume: number;
+  dialogueVolume: number;
+  textSpeed: number;
+  autoAdvance: boolean;
+  shakeIntensity: number;
+  heatHaze: boolean;
+  subtleFlashes: boolean;
+  highContrastText: boolean;
+  directionalCaptions: boolean;
+}
+export const DEFAULT_GAME_SETTINGS: GameSettings = {
+  masterVolume: 0.65,
+  environmentVolume: 0.72,
+  dialogueVolume: 0.7,
+  textSpeed: 24,
+  autoAdvance: false,
+  shakeIntensity: 0.35,
+  heatHaze: true,
+  subtleFlashes: false,
+  highContrastText: false,
+  directionalCaptions: true,
+};
+
 export interface SaveData {
-  version: 3;
-  player: { x: number; y: number };
+  version: 1;
+  title: string;
+  currentChapter: string;
   currentMap: string;
+  spawn: string;
+  player: { x: number; y: number };
   triggeredEvents: string[];
+  completedDialogues: string[];
   inventory: InventorySaveData;
   story: SerializedStoryState;
   quests: QuestSaveData;
   achievements: AchievementSaveData;
   endings: EndingSaveData;
+  settings: GameSettings;
   updatedAt: string;
 }
 
-interface LegacySaveData {
-  version: number;
-  player: { x: number; y: number };
-  currentMap: string;
-  triggeredEvents?: string[];
-  items?: string[];
-  story?: SerializedStoryState & { reachedEndings?: string[] };
-}
-
-/** LocalStorage v3 存档，读取时自动迁移 v1/v2 数据。 */
+/** 科马拉独立存档与设置；不会读取旧题材存档。 */
 export class SaveSystem {
-  private readonly storageKey = 'pixel-town-story.save.v1';
+  private readonly storageKey = 'comala-whispers.save.v1';
+  private readonly settingsKey = 'comala-whispers.settings.v1';
 
   Save(data: Omit<SaveData, 'version' | 'updatedAt'>): boolean {
     try {
-      const payload: SaveData = { ...data, version: 3, updatedAt: new Date().toISOString() };
+      const payload: SaveData = { ...data, version: 1, updatedAt: new Date().toISOString() };
       localStorage.setItem(this.storageKey, JSON.stringify(payload));
+      this.SaveSettings(data.settings);
       return true;
     } catch (error) {
-      console.error('保存失败', error);
+      console.error('无法写入科马拉存档', error);
       return false;
     }
   }
 
   Load(): SaveData | null {
     try {
-      const rawText = localStorage.getItem(this.storageKey);
-      if (!rawText) return null;
-      const raw = JSON.parse(rawText) as Partial<SaveData> & LegacySaveData;
-      if (![1, 2, 3].includes(raw.version) || !raw.player || !raw.currentMap) return null;
-
-      const legacyEntries = (raw.items ?? []).map((itemId) => ({ itemId, quantity: 1 }));
-      const legacyEndings = raw.story?.reachedEndings ?? [];
-      const currentEnding = raw.story?.variables?.current_ending;
+      const text = localStorage.getItem(this.storageKey);
+      if (!text) return null;
+      const raw = JSON.parse(text) as Partial<SaveData> & {
+        settings?: Partial<GameSettings> & { muted?: boolean };
+      };
+      if (raw.version !== 1 || !raw.player || raw.currentMap !== 'comala' || !raw.story) return null;
+      const settings = this.normalizeSettings(raw.settings);
       return {
-        version: 3,
+        version: 1,
+        title: raw.title ?? '科马拉 · 一段未说完的话',
+        currentChapter: raw.currentChapter ?? 'chapter_1_descent',
+        currentMap: 'comala',
+        spawn: raw.spawn ?? 'last_position',
         player: raw.player,
-        currentMap: raw.currentMap,
         triggeredEvents: raw.triggeredEvents ?? [],
-        inventory: raw.inventory ?? { entries: legacyEntries },
-        story: { variables: raw.story?.variables ?? {} },
+        completedDialogues: raw.completedDialogues ?? [],
+        inventory: raw.inventory ?? { entries: [] },
+        story: raw.story,
         quests: raw.quests ?? { states: {} },
         achievements: raw.achievements ?? { unlocked: [], progress: {} },
-        endings: raw.endings ?? {
-          reached: legacyEndings,
-          currentEnding: typeof currentEnding === 'string' ? currentEnding : '',
-        },
+        endings: raw.endings ?? { reached: [], currentEnding: '' },
+        settings,
         updatedAt: raw.updatedAt ?? new Date(0).toISOString(),
       };
     } catch (error) {
-      console.error('读取存档失败', error);
+      console.error('科马拉存档损坏，已回退到新旅程', error);
       return null;
     }
   }
 
+  LoadSettings(): GameSettings {
+    try {
+      const text = localStorage.getItem(this.settingsKey);
+      if (text) return this.normalizeSettings(JSON.parse(text) as Partial<GameSettings>);
+      return this.Load()?.settings ?? { ...DEFAULT_GAME_SETTINGS };
+    } catch {
+      return { ...DEFAULT_GAME_SETTINGS };
+    }
+  }
+
+  SaveSettings(settings: GameSettings): void {
+    localStorage.setItem(this.settingsKey, JSON.stringify(this.normalizeSettings(settings)));
+  }
+
   hasSave(): boolean {
     return this.Load() !== null;
+  }
+
+  deleteSave(): void {
+    localStorage.removeItem(this.storageKey);
+  }
+
+  private normalizeSettings(
+    settings?: Partial<GameSettings> & { muted?: boolean },
+  ): GameSettings {
+    return {
+      ...DEFAULT_GAME_SETTINGS,
+      ...settings,
+      masterVolume: settings?.muted ? 0 : settings?.masterVolume ?? DEFAULT_GAME_SETTINGS.masterVolume,
+      environmentVolume: settings?.environmentVolume ?? DEFAULT_GAME_SETTINGS.environmentVolume,
+      dialogueVolume: settings?.dialogueVolume ?? DEFAULT_GAME_SETTINGS.dialogueVolume,
+      textSpeed: settings?.textSpeed ?? DEFAULT_GAME_SETTINGS.textSpeed,
+      shakeIntensity: settings?.shakeIntensity ?? DEFAULT_GAME_SETTINGS.shakeIntensity,
+    };
   }
 }

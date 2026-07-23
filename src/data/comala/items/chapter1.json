@@ -1,0 +1,35 @@
+[
+  {
+    "id": "dolores_photo",
+    "name": "多洛雷斯的旧照片",
+    "description": "边缘被虫蛀过，心口处有一个较大的针孔。它既是身份证明，也是胡安带来的那双“母亲的眼睛”。",
+    "type": "quest",
+    "stackable": false,
+    "maxStack": 1
+  },
+  {
+    "id": "unclaimed_letter",
+    "name": "未寄出的信",
+    "description": "收信人的名字已经褪色。信没有说明真相，只证明有人曾打算离开。",
+    "type": "quest",
+    "stackable": false,
+    "maxStack": 1
+  },
+  {
+    "id": "ledger_fragment",
+    "name": "半月庄账簿碎片",
+    "description": "地租、欠债与地界写在同一页，人的名字像土地一样被划归。",
+    "type": "quest",
+    "stackable": false,
+    "maxStack": 1
+  },
+  {
+    "id": "old_key",
+    "name": "生锈的房门钥匙",
+    "description": "爱杜薇海斯替一个再也没有回来的人保管着它。",
+    "type": "key",
+    "stackable": false,
+    "maxStack": 1
+  }
+]
+

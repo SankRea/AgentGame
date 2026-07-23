@@ -1,0 +1,22 @@
+[
+  {
+    "id": "the_town_answers",
+    "title": "空镇作答",
+    "description": "听见三个属于科马拉的声音。",
+    "requirements": [{ "event": "dialogue_complete", "target": "*", "count": 3 }]
+  },
+  {
+    "id": "same_wall_twice",
+    "title": "同一面墙",
+    "description": "看见同一地点的两个时间层。",
+    "requirements": [{ "event": "time_layer_changed", "target": "past", "count": 1 }]
+  },
+  {
+    "id": "already_buried",
+    "title": "已经埋葬的人",
+    "description": "确认胡安讲述故事时已经死去。",
+    "hidden": true,
+    "requirements": [{ "event": "character_truth_discovered", "target": "juan_is_dead", "count": 1 }]
+  }
+]
+

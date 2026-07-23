@@ -92,12 +92,12 @@ export class QuestSystem {
 
   getActiveSummary(): string {
     const entry = [...this.states].find(([, state]) => state.status === 'active');
-    if (!entry) return '当前没有任务';
+    if (!entry) return '没有尚未完成的遗愿';
     const [questId, state] = entry;
     const quest = this.definitions.get(questId)!;
     const objective = quest.objectives.find((item) => (state.progress[item.id] ?? 0) < item.required);
     if (!objective) return quest.title;
-    return `${quest.title}：${objective.description} (${state.progress[objective.id] ?? 0}/${objective.required})`;
+    return `${quest.title}：${objective.description}（${state.progress[objective.id] ?? 0}/${objective.required}）`;
   }
 
   isCompleted(questId: string): boolean {

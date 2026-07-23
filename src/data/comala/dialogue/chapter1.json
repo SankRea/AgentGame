@@ -1,0 +1,260 @@
+[
+  {
+    "id": "prologue_mothers_wish",
+    "voice": "memory",
+    "start": "promise",
+    "nodes": [
+      {
+        "id": "promise",
+        "speaker": "多洛雷斯的记忆",
+        "voice": "memory",
+        "text": "母亲临终时把一个名字交给了我：佩德罗·巴拉莫。她要我去科马拉，向他索回从未给过我们的东西。",
+        "onEnterEffects": [
+          { "variable": "maternalMemory", "operation": "add", "value": 1 }
+        ],
+        "next": "road"
+      },
+      {
+        "id": "road",
+        "speaker": "旁白",
+        "voice": "narration",
+        "text": "八月的热风沿下坡路往上爬。远处的白墙像泡在一层透明的沸水里。",
+        "onEnterEffects": [
+          { "variable": "memory", "operation": "add", "value": 1 },
+          { "variable": "heat", "operation": "add", "value": 4 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "abundio_road",
+    "start": "greeting",
+    "nodes": [
+      {
+        "id": "greeting",
+        "speaker": "赶驴人",
+        "voice": "ghost",
+        "text": "您也是下坡去吗？这里没有别的路。山背后是半月庄；看得见的土地，过去差不多都归一个人。",
+        "choices": [
+          { "id": "abundio_ask_town", "text": "问科马拉为何这样安静", "intent": "观察这座镇子", "next": "empty_town" },
+          { "id": "abundio_ask_father", "text": "直接问佩德罗·巴拉莫", "intent": "追问父亲", "next": "father" },
+          { "id": "abundio_walk_silent", "text": "沉默地与他并肩下坡", "intent": "先聆听", "next": "brothers" }
+        ]
+      },
+      {
+        "id": "empty_town",
+        "speaker": "赶驴人",
+        "voice": "ghost",
+        "text": "不是看起来没人。那里确实早就空了。可声音不肯随人一起走。",
+        "next": "brothers"
+      },
+      {
+        "id": "father",
+        "speaker": "赶驴人",
+        "voice": "ghost",
+        "text": "佩德罗·巴拉莫？一片活着的怨恨。只是您来迟了许多年。",
+        "next": "brothers",
+        "onEnterEffects": [{ "variable": "fatherClues", "operation": "add", "value": 1 }]
+      },
+      {
+        "id": "brothers",
+        "speaker": "阿文迪奥·马丁内斯",
+        "voice": "ghost",
+        "text": "我也算是他的儿子。到了镇里，去找爱杜薇海斯。要是她还活着，就说是阿文迪奥让您去的。",
+        "next": "late"
+      },
+      {
+        "id": "late",
+        "speaker": "阿文迪奥·马丁内斯",
+        "voice": "ghost",
+        "text": "至于佩德罗·巴拉莫，他已经死去很久了。",
+        "onEnterEffects": [
+          { "variable": "heard_abundio", "operation": "set", "value": true },
+          { "variable": "truth", "operation": "add", "value": 1 },
+          { "variable": "murmurs", "operation": "add", "value": 1 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "eduviges_house",
+    "start": "expected",
+    "nodes": [
+      {
+        "id": "expected",
+        "speaker": "爱杜薇海斯·地亚达",
+        "voice": "ghost",
+        "text": "请进，胡安·普雷西亚多。我给你留着最里面的房间。你母亲说你今天会来。",
+        "choices": [
+          { "id": "eduviges_question_dead_mother", "text": "指出母亲已经去世", "intent": "质疑她如何得知", "next": "dolores_voice" },
+          { "id": "eduviges_ask_furniture", "text": "询问黑暗里的家具", "intent": "调查空屋", "next": "furniture" },
+          { "id": "eduviges_accept", "text": "接受她早已知道这件事", "intent": "继续聆听", "next": "dolores_friend" }
+        ]
+      },
+      {
+        "id": "dolores_voice",
+        "speaker": "爱杜薇海斯·地亚达",
+        "voice": "ghost",
+        "text": "死并不会让一个人的声音立刻变远。多洛雷斯比你先到，只是没有带着身体。",
+        "next": "dolores_friend",
+        "onEnterEffects": [
+          { "variable": "clarity", "operation": "subtract", "value": 6 },
+          { "variable": "murmurs", "operation": "add", "value": 1 }
+        ]
+      },
+      {
+        "id": "furniture",
+        "speaker": "爱杜薇海斯·地亚达",
+        "voice": "ghost",
+        "text": "离开科马拉的人把东西寄放在这里。他们接走了家人，却没人回来取桌椅和床。房子替他们记着。",
+        "next": "dolores_friend",
+        "onEnterEffects": [{ "variable": "memory", "operation": "add", "value": 1 }]
+      },
+      {
+        "id": "dolores_friend",
+        "speaker": "爱杜薇海斯·地亚达",
+        "voice": "ghost",
+        "text": "你母亲曾以为婚姻会带她进入半月庄，后来才知道自己只是账上的一笔安排。她离开时，科马拉还没有完全停止呼吸。",
+        "onEnterEffects": [
+          { "variable": "met_eduviges", "operation": "set", "value": true },
+          { "variable": "fatherClues", "operation": "add", "value": 1 },
+          { "variable": "truth", "operation": "add", "value": 1 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "damiana_street",
+    "start": "call",
+    "nodes": [
+      {
+        "id": "call",
+        "speaker": "墙后",
+        "voice": "ghost",
+        "text": "胡安。别站在街心。那些房子把人说过的话含在墙缝里，天黑后就会一起吐出来。",
+        "next": "identity"
+      },
+      {
+        "id": "identity",
+        "speaker": "达米亚娜·西斯内罗斯",
+        "voice": "ghost",
+        "text": "小时候我抱过你。你若还记得我的手，就跟着钟声走；不要跟着看得见的人影。",
+        "next": "vanish"
+      },
+      {
+        "id": "vanish",
+        "speaker": "旁白",
+        "voice": "narration",
+        "text": "我只移开一次目光，她就不在街上了。没有门响，没有脚步离开。",
+        "onEnterEffects": [
+          { "variable": "heard_damiana", "operation": "set", "value": true },
+          { "variable": "murmurs", "operation": "add", "value": 2 },
+          { "variable": "clarity", "operation": "subtract", "value": 8 },
+          { "variable": "truth", "operation": "add", "value": 1 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "renteria_confession",
+    "start": "ledger",
+    "nodes": [
+      {
+        "id": "ledger",
+        "speaker": "伦特里亚神父的记忆",
+        "voice": "memory",
+        "text": "我替有钱人的亡灵开门，却让穷人留在门外。供养我的人也规定了我该宽恕谁。",
+        "choices": [
+          { "id": "renteria_ask_miguel", "text": "追问米格尔得到的赦免", "intent": "面对神父的妥协", "next": "miguel" },
+          { "id": "renteria_ask_poor", "text": "问那些付不起弥撒钱的人", "intent": "追问被拒绝者", "next": "poor" },
+          { "id": "renteria_silence", "text": "不替他减轻罪责", "intent": "沉默", "next": "guilt" }
+        ]
+      },
+      {
+        "id": "miguel",
+        "speaker": "伦特里亚神父的记忆",
+        "voice": "memory",
+        "text": "米格尔伤害过许多人。我知道。可佩德罗的金币落进盘里时，我还是为他念完了祷词。",
+        "next": "guilt"
+      },
+      {
+        "id": "poor",
+        "speaker": "伦特里亚神父的记忆",
+        "voice": "memory",
+        "text": "他们给不起钱，只能把希望留给上帝。我却连一句宽恕也吝于给出。",
+        "next": "guilt"
+      },
+      {
+        "id": "guilt",
+        "speaker": "伦特里亚神父的记忆",
+        "voice": "memory",
+        "text": "科马拉不是被某一桩罪毁掉的。它被每一次明知如此却仍旧低头的时刻慢慢掏空。",
+        "onEnterEffects": [
+          { "variable": "heard_renteria", "operation": "set", "value": true },
+          { "variable": "guilt", "operation": "add", "value": 2 },
+          { "variable": "memory", "operation": "add", "value": 1 },
+          { "variable": "truth", "operation": "add", "value": 1 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dorotea_grave",
+    "start": "correction",
+    "nodes": [
+      {
+        "id": "correction",
+        "speaker": "多罗特亚",
+        "voice": "ghost",
+        "text": "你还说自己刚刚被热气闷住。可我找到你时，你已经在广场上僵硬了。那些低语早就把你吓死。",
+        "next": "buried"
+      },
+      {
+        "id": "buried",
+        "speaker": "多罗特亚",
+        "voice": "ghost",
+        "text": "我们不是正躺在同一座坟里吗，胡安？你讲的下坡路、空屋和钟声，都是从土下面重新响起的。",
+        "next": "choice",
+        "onEnterEffects": [
+          { "variable": "isDead", "operation": "set", "value": true },
+          { "variable": "grave_revelation", "operation": "set", "value": true },
+          { "variable": "currentTimeLayer", "operation": "set", "value": "grave" },
+          { "variable": "currentPerspective", "operation": "set", "value": "dorotea" },
+          { "variable": "memory", "operation": "add", "value": 1 },
+          { "variable": "truth", "operation": "add", "value": 1 }
+        ]
+      },
+      {
+        "id": "choice",
+        "speaker": "多罗特亚",
+        "voice": "ghost",
+        "text": "土地里还有更多人在说。你要继续听，还是让已经听见的这些成为最后的科马拉？",
+        "choices": [
+          {
+            "id": "dorotea_keep_listening",
+            "text": "留下，继续辨认每一个声音",
+            "intent": "接受墓中的集体记忆",
+            "next": "ending_gate",
+            "effects": [
+              { "variable": "chose_to_listen", "operation": "set", "value": true },
+              { "variable": "murmurs", "operation": "add", "value": 3 }
+            ]
+          },
+          {
+            "id": "dorotea_leave_with_memory",
+            "text": "让这些碎片保持未被填满",
+            "intent": "停止追问",
+            "next": "ending_gate"
+          }
+        ]
+      },
+      {
+        "id": "ending_gate",
+        "speaker": "地下",
+        "voice": "ghost",
+        "text": "土粒从上方落下。科马拉把所有声音收拢，又慢慢分开。",
+        "endingCheck": true
+      }
+    ]
+  }
+]

@@ -1,93 +1,73 @@
 import Phaser from 'phaser';
-import dialogueData from '../data/dialogue/chapter1.json';
-import eventData from '../data/events/chapter1.json';
-import itemData from '../data/items/chapter1.json';
-import storyData from '../data/cultivation/initial.json';
-import karmaData from '../data/cultivation/karma.json';
-import questData from '../data/quests/chapter1.json';
-import achievementData from '../data/achievements/chapter1.json';
-import endingData from '../data/endings/chapter1.json';
-import npcData from '../data/npcs/chapter1.json';
-import characterSheetUrl from '../assets/sprites/characters-sheet.png?url';
-import environmentSheetUrl from '../assets/sprites/environment-sheet.png?url';
-import terrainTilesUrl from '../assets/sprites/terrain-tiles.png?url';
+import achievementData from '../data/comala/achievements/chapter1.json';
+import characterData from '../data/comala/characters/chapter1.json';
+import chapterDialogue from '../data/comala/dialogue/chapter1.json';
+import endingDialogue from '../data/comala/dialogue/endings.json';
+import endingData from '../data/comala/endings/chapter1.json';
+import eventData from '../data/comala/events/chapter1.json';
+import itemData from '../data/comala/items/chapter1.json';
+import manifest from '../data/comala/manifest.json';
+import memoryData from '../data/comala/memories/chapter1.json';
+import questData from '../data/comala/quests/chapter1.json';
+import storyData from '../data/comala/story/initial.json';
 
-/** 加载正式像素 sprite sheet、Tiled 地图与剧情数据。 */
+/** 装载科马拉内容包，并生成可替换的原创程序化像素角色。 */
 export class BootScene extends Phaser.Scene {
   constructor() {
     super('BootScene');
   }
 
-  preload(): void {
-    this.load.spritesheet('characters', characterSheetUrl, {
-      frameWidth: 256,
-      frameHeight: 256,
-    });
-    this.load.spritesheet('environment', environmentSheetUrl, {
-      frameWidth: 256,
-      frameHeight: 256,
-    });
-    this.load.image('terrain-tiles', terrainTilesUrl);
-
-    this.cache.json.add('dialogues', dialogueData);
+  create(): void {
+    this.cache.json.add('manifest', manifest);
+    this.cache.json.add('dialogues', [...chapterDialogue, ...endingDialogue]);
     this.cache.json.add('events', eventData);
     this.cache.json.add('items', itemData);
     this.cache.json.add('story', storyData);
-    this.cache.json.add('cultivation', storyData);
-    this.cache.json.add('karma', karmaData);
     this.cache.json.add('quests', questData);
     this.cache.json.add('achievements', achievementData);
     this.cache.json.add('endings', endingData);
-    this.cache.json.add('npcs', npcData);
-  }
-
-  create(): void {
-    this.createAnimations();
+    this.cache.json.add('npcs', characterData);
+    this.cache.json.add('memories', memoryData);
+    this.createCharacterTextures();
     this.scene.start('MenuScene');
   }
 
-  private createAnimations(): void {
-    this.anims.create({
-      key: 'player-walk-down',
-      frames: this.anims.generateFrameNumbers('characters', { start: 0, end: 3 }),
-      frameRate: 8,
-      repeat: -1,
-    });
-    this.anims.create({
-      key: 'player-walk-up',
-      frames: this.anims.generateFrameNumbers('characters', { start: 4, end: 7 }),
-      frameRate: 8,
-      repeat: -1,
-    });
-    this.anims.create({
-      key: 'player-walk-side',
-      frames: this.anims.generateFrameNumbers('characters', { start: 8, end: 11 }),
-      frameRate: 8,
-      repeat: -1,
-    });
-    this.anims.create({
-      key: 'npc-old-man-idle',
-      frames: this.anims.generateFrameNumbers('characters', { start: 12, end: 15 }),
-      frameRate: 3,
-      repeat: -1,
-      yoyo: true,
-    });
+  private createCharacterTextures(): void {
+    this.drawPerson('juan-down', 'down', 0x3a3029, 0xb79a72, 0x66533d, 0x28241f);
+    this.drawPerson('juan-up', 'up', 0x3a3029, 0xb79a72, 0x66533d, 0x28241f);
+    this.drawPerson('juan-side', 'side', 0x3a3029, 0xb79a72, 0x66533d, 0x28241f);
+    this.drawPerson('abundio', 'side', 0x2b2722, 0x967b58, 0x594b38, 0x25221f, true);
+    this.drawPerson('eduviges', 'down', 0x322b2b, 0x9e8065, 0x5e4b4c, 0x252124, true);
+    this.drawPerson('renteria', 'down', 0x171718, 0x9b7e65, 0x28272a, 0x151518, true);
+  }
 
-    const environmentAnimations = [
-      { key: 'environment-lantern', start: 0, end: 3, frameRate: 7 },
-      { key: 'environment-well', start: 4, end: 7, frameRate: 4 },
-      { key: 'environment-tree', start: 8, end: 11, frameRate: 2 },
-      { key: 'environment-flowers', start: 12, end: 15, frameRate: 3 },
-    ];
-    environmentAnimations.forEach((animation) => this.anims.create({
-      key: animation.key,
-      frames: this.anims.generateFrameNumbers('environment', {
-        start: animation.start,
-        end: animation.end,
-      }),
-      frameRate: animation.frameRate,
-      repeat: -1,
-      yoyo: true,
-    }));
+  private drawPerson(
+    key: string,
+    facing: 'down' | 'up' | 'side',
+    hair: number,
+    skin: number,
+    shirt: number,
+    trousers: number,
+    faded = false,
+  ): void {
+    const graphics = this.add.graphics();
+    const alpha = faded ? 0.78 : 1;
+    graphics.fillStyle(trousers, alpha).fillRect(6, 19, 4, 7).fillRect(12, 19, 4, 7);
+    graphics.fillStyle(shirt, alpha).fillRect(5, 10, 12, 11).fillRect(3, 12, 3, 7).fillRect(16, 12, 3, 7);
+    graphics.fillStyle(skin, alpha).fillRect(6, 3, 10, 8);
+    graphics.fillStyle(hair, alpha).fillRect(6, 2, 10, 3);
+    if (facing === 'down') {
+      graphics.fillStyle(0x211d1a, alpha).fillRect(8, 6, 2, 2).fillRect(13, 6, 2, 2);
+    } else if (facing === 'up') {
+      graphics.fillStyle(hair, alpha).fillRect(6, 4, 10, 5);
+    } else {
+      graphics.fillStyle(0x211d1a, alpha).fillRect(14, 6, 2, 2);
+      graphics.fillStyle(skin, alpha).fillRect(16, 6, 2, 3);
+    }
+    if (faded) {
+      graphics.fillStyle(0xc8b8a0, 0.2).fillRect(4, 9, 14, 1).fillRect(7, 17, 10, 1);
+    }
+    graphics.generateTexture(key, 22, 28);
+    graphics.destroy();
   }
 }

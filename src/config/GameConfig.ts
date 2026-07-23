@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { BootScene } from '../scenes/BootScene';
+import { EndingScene } from '../scenes/EndingScene';
 import { MenuScene } from '../scenes/MenuScene';
 import { GameScene } from '../scenes/GameScene';
 
@@ -11,7 +12,7 @@ export const gameConfig: Phaser.Types.Core.GameConfig = {
   parent: 'game-container',
   width: GAME_WIDTH,
   height: GAME_HEIGHT,
-  backgroundColor: '#080706',
+  backgroundColor: '#6e5138',
   pixelArt: true,
   roundPixels: true,
   physics: {
@@ -25,5 +26,5 @@ export const gameConfig: Phaser.Types.Core.GameConfig = {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
   },
-  scene: [BootScene, MenuScene, GameScene],
+  scene: [BootScene, MenuScene, GameScene, EndingScene],
 };

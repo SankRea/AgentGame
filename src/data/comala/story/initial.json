@@ -1,0 +1,27 @@
+{
+  "initialVariables": {
+    "vitality": 100,
+    "heat": 68,
+    "clarity": 86,
+    "murmurs": 0,
+    "memory": 0,
+    "maternalMemory": 0,
+    "fatherClues": 0,
+    "guilt": 0,
+    "truth": 0,
+    "isDead": false,
+    "currentPerspective": "juan",
+    "currentTimeLayer": "embers",
+    "currentChapter": "chapter_1_descent",
+    "current_ending": "",
+    "heard_abundio": false,
+    "met_eduviges": false,
+    "heard_damiana": false,
+    "heard_renteria": false,
+    "found_photo": false,
+    "found_ledger": false,
+    "entered_memory": false,
+    "grave_revelation": false,
+    "chose_to_listen": false
+  }
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "id": "dolores_last_wish",
+    "title": "遗愿 · 找到佩德罗·巴拉莫",
+    "description": "沿着母亲记忆中的科马拉，确认佩德罗留下了什么。",
+    "autoStart": true,
+    "objectives": [
+      { "id": "hear_road", "description": "听完下坡路上的回答", "event": "dialogue_complete", "target": "abundio_road", "required": 1 },
+      { "id": "meet_host", "description": "找到等候你的爱杜薇海斯", "event": "dialogue_complete", "target": "eduviges_house", "required": 1 },
+      { "id": "reach_grave", "description": "循着低语走到墓地", "event": "story_event", "target": "grave_threshold", "required": 1 }
+    ],
+    "rewards": {
+      "storyEffects": [{ "variable": "memory", "operation": "add", "value": 1 }]
+    }
+  }
+]
+

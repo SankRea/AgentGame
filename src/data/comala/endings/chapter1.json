@@ -1,0 +1,39 @@
+[
+  {
+    "id": "remain_in_murmurs",
+    "name": "又一个声音",
+    "description": "胡安留在墓中继续聆听，直到自己的话也混进科马拉的合声。",
+    "priority": 120,
+    "conditions": [{ "variable": "chose_to_listen", "operator": "equals", "value": true }],
+    "dialogueId": "ending_remain_in_murmurs"
+  },
+  {
+    "id": "mothers_place",
+    "name": "母亲所说的地方",
+    "description": "胡安在废墟上辨认出母亲记忆里的绿意，也承认那地方只存在于她的叙述中。",
+    "priority": 110,
+    "conditions": [
+      { "variable": "maternalMemory", "operator": "gte", "value": 3 }
+    ],
+    "dialogueId": "ending_mothers_place"
+  },
+  {
+    "id": "memory_of_comala",
+    "name": "科马拉的记忆",
+    "description": "碎片没有洗清任何人，却让土地、欲望和死亡显出彼此的联系。",
+    "priority": 100,
+    "conditions": [
+      { "variable": "truth", "operator": "gte", "value": 4 },
+      { "variable": "memory", "operator": "gte", "value": 4 }
+    ],
+    "dialogueId": "ending_memory_of_comala"
+  },
+  {
+    "id": "unfinished_search",
+    "name": "未说完的话",
+    "description": "胡安带着不完整的父亲形象停在问题里，等待下一次聆听。",
+    "priority": 10,
+    "conditions": [],
+    "dialogueId": "ending_unfinished_search"
+  }
+]

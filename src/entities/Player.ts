@@ -1,20 +1,20 @@
 import Phaser from 'phaser';
 
-/** 使用角色 sprite sheet 的可控制玩家实体。 */
+/** 胡安·普雷西亚多的三方向程序化像素角色。 */
 export class Player extends Phaser.Physics.Arcade.Sprite {
+  private readonly shadow: Phaser.GameObjects.Ellipse;
   private readonly cursors: Phaser.Types.Input.Keyboard.CursorKeys;
   private readonly keys: Record<'up' | 'down' | 'left' | 'right', Phaser.Input.Keyboard.Key>;
-  private readonly speed = 145;
+  private readonly speed = 138;
   private facing: 'down' | 'up' | 'side' = 'down';
 
   constructor(scene: Phaser.Scene, x: number, y: number) {
-    super(scene, x, y, 'characters', 0);
+    super(scene, x, y, 'juan-down');
+    this.shadow = scene.add.ellipse(x, y + 22, 28, 9, 0x303438, 0.24);
     scene.add.existing(this);
     scene.physics.add.existing(this);
-    this.setScale(0.23).setDepth(20).setCollideWorldBounds(true);
-    // 大画布帧中角色居中，因此碰撞体只覆盖脚边区域。
-    this.body.setSize(58, 42).setOffset(99, 176);
-
+    this.setScale(2).setDepth(20).setCollideWorldBounds(true);
+    this.body.setSize(12, 8).setOffset(5, 19);
     this.cursors = scene.input.keyboard!.createCursorKeys();
     this.keys = scene.input.keyboard!.addKeys({
       up: Phaser.Input.Keyboard.KeyCodes.W,
@@ -26,21 +26,21 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
 
   updateMovement(enabled = true): void {
     this.setDepth(Math.round(this.y));
+    this.shadow.setPosition(this.x, this.y + 22).setDepth(Math.round(this.y) - 1);
     if (!enabled) {
       this.stopMoving();
       return;
     }
-
-    const left = this.cursors.left.isDown || this.keys.left.isDown;
-    const right = this.cursors.right.isDown || this.keys.right.isDown;
-    const up = this.cursors.up.isDown || this.keys.up.isDown;
-    const down = this.cursors.down.isDown || this.keys.down.isDown;
-    const velocity = new Phaser.Math.Vector2(Number(right) - Number(left), Number(down) - Number(up));
+    const velocity = new Phaser.Math.Vector2(
+      Number(this.cursors.right.isDown || this.keys.right.isDown)
+        - Number(this.cursors.left.isDown || this.keys.left.isDown),
+      Number(this.cursors.down.isDown || this.keys.down.isDown)
+        - Number(this.cursors.up.isDown || this.keys.up.isDown),
+    );
     if (velocity.lengthSq() === 0) {
       this.stopMoving();
       return;
     }
-
     velocity.normalize().scale(this.speed);
     this.setVelocity(velocity.x, velocity.y);
     if (Math.abs(velocity.x) > Math.abs(velocity.y)) {
@@ -50,12 +50,21 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
       this.facing = velocity.y < 0 ? 'up' : 'down';
       this.setFlipX(false);
     }
-    this.anims.play(`player-walk-${this.facing}`, true);
+    this.setTexture(`juan-${this.facing}`);
+    this.setScale(2, 2 + Math.sin(this.scene.time.now / 82) * 0.04);
   }
 
   stopMoving(): void {
     this.setVelocity(0, 0);
-    this.anims.stop();
-    this.setFrame({ down: 0, up: 4, side: 8 }[this.facing]);
+    this.setScale(2);
+  }
+
+  setDead(isDead: boolean): void {
+    this.shadow.setAlpha(isDead ? 0.025 : 0.24);
+  }
+
+  destroy(fromScene?: boolean): void {
+    this.shadow.destroy();
+    super.destroy(fromScene);
   }
 }

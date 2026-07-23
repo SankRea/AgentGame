@@ -1,0 +1,39 @@
+[
+  {
+    "id": "abundio_martinez",
+    "map": "comala",
+    "name": "阿文迪奥·马丁内斯",
+    "role": "下坡路上的赶驴人",
+    "dialogueId": "abundio_road",
+    "texture": "abundio",
+    "x": 420,
+    "y": 820,
+    "voice": "ghost",
+    "enabled": true
+  },
+  {
+    "id": "eduviges_dyada",
+    "map": "comala",
+    "name": "爱杜薇海斯·地亚达",
+    "role": "等候胡安的旧友",
+    "dialogueId": "eduviges_house",
+    "texture": "eduviges",
+    "x": 815,
+    "y": 650,
+    "voice": "ghost",
+    "enabled": true
+  },
+  {
+    "id": "father_renteria",
+    "map": "comala",
+    "name": "伦特里亚神父",
+    "role": "被罪责压住的神父",
+    "dialogueId": "renteria_confession",
+    "texture": "renteria",
+    "x": 1210,
+    "y": 405,
+    "voice": "memory",
+    "enabled": true
+  }
+]
+

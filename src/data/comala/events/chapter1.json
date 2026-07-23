@@ -1,0 +1,129 @@
+[
+  {
+    "id": "mothers_photo",
+    "map": "comala",
+    "type": "dialogue",
+    "trigger": "investigate",
+    "speaker": "多洛雷斯的照片",
+    "voice": "memory",
+    "prompt": "查看贴在心口的旧照片",
+    "text": [
+      "照片的边缘已经被虫蛀空。母亲心口处那个针孔，在热气里像仍有温度。",
+      "她记忆中的科马拉有绿色平原；眼前只有灰黄土地和刺眼白墙。"
+    ],
+    "position": { "x": 300, "y": 860 },
+    "radius": 72,
+    "once": true,
+    "rewards": ["dolores_photo"],
+    "effects": [
+      { "variable": "found_photo", "operation": "set", "value": true },
+      { "variable": "memory", "operation": "add", "value": 1 },
+      { "variable": "maternalMemory", "operation": "add", "value": 2 }
+    ]
+  },
+  {
+    "id": "empty_house_furniture",
+    "map": "comala",
+    "type": "dialogue",
+    "trigger": "investigate",
+    "speaker": "空屋",
+    "voice": "narration",
+    "prompt": "触摸门洞里的旧家具",
+    "text": [
+      "床架、桌子和一只没有盖的箱子挤在黑暗里。主人离开时都说还会回来。",
+      "箱底压着一封没有寄出的信。收信人的名字被汗和灰抹去了。"
+    ],
+    "position": { "x": 760, "y": 620 },
+    "radius": 78,
+    "once": true,
+    "rewards": ["unclaimed_letter", "old_key"],
+    "effects": [
+      { "variable": "memory", "operation": "add", "value": 1 },
+      { "variable": "murmurs", "operation": "add", "value": 1 }
+    ]
+  },
+  {
+    "id": "damiana_echo",
+    "map": "comala",
+    "type": "dialogue",
+    "trigger": "area",
+    "dialogueId": "damiana_street",
+    "speaker": "墙后",
+    "voice": "ghost",
+    "area": { "x": 850, "y": 470, "width": 180, "height": 160 },
+    "once": true
+  },
+  {
+    "id": "church_bell",
+    "map": "comala",
+    "type": "dialogue",
+    "trigger": "investigate",
+    "speaker": "教堂钟下",
+    "voice": "memory",
+    "prompt": "聆听没有摆动的钟",
+    "text": [
+      "钟没有动，余音却从塔身内部传来。祷词和钱币落在同一只盘里。",
+      "短暂的一瞬，白墙恢复了人群的影子；随后太阳又把他们擦掉。"
+    ],
+    "position": { "x": 1220, "y": 330 },
+    "radius": 88,
+    "once": true,
+    "effects": [
+      { "variable": "currentTimeLayer", "operation": "set", "value": "past" },
+      { "variable": "entered_memory", "operation": "set", "value": true },
+      { "variable": "memory", "operation": "add", "value": 1 },
+      { "variable": "murmurs", "operation": "add", "value": 1 }
+    ]
+  },
+  {
+    "id": "medi_luna_ledger",
+    "map": "comala",
+    "type": "dialogue",
+    "trigger": "investigate",
+    "speaker": "半月庄账簿",
+    "voice": "memory",
+    "prompt": "翻看被风吹开的账页",
+    "text": [
+      "地界、债务和婚姻写在相邻的行里。富尔戈尔的笔迹把犹豫改成命令。",
+      "远处的半月庄没有靠近，但它占据了这页纸能指向的一切。"
+    ],
+    "position": { "x": 1430, "y": 640 },
+    "radius": 78,
+    "once": true,
+    "rewards": ["ledger_fragment"],
+    "effects": [
+      { "variable": "found_ledger", "operation": "set", "value": true },
+      { "variable": "fatherClues", "operation": "add", "value": 2 },
+      { "variable": "truth", "operation": "add", "value": 1 },
+      { "variable": "memory", "operation": "add", "value": 1 }
+    ]
+  },
+  {
+    "id": "return_to_embers",
+    "map": "comala",
+    "type": "dialogue",
+    "trigger": "investigate",
+    "speaker": "热风",
+    "voice": "narration",
+    "prompt": "从往昔的影子中退开",
+    "conditions": [{ "variable": "currentTimeLayer", "operator": "equals", "value": "past" }],
+    "text": "人群的影子被正午白光穿透。科马拉又只剩空街。",
+    "position": { "x": 1090, "y": 560 },
+    "radius": 72,
+    "once": false,
+    "effects": [{ "variable": "currentTimeLayer", "operation": "set", "value": "embers" }]
+  },
+  {
+    "id": "grave_threshold",
+    "map": "comala",
+    "type": "dialogue",
+    "trigger": "investigate",
+    "dialogueId": "dorotea_grave",
+    "speaker": "地下",
+    "voice": "ghost",
+    "prompt": "俯身听墓穴里的呼吸",
+    "position": { "x": 1420, "y": 235 },
+    "radius": 92,
+    "once": true
+  }
+]

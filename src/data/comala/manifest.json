@@ -1,0 +1,26 @@
+{
+  "id": "comala-whispers",
+  "title": "佩德罗·巴拉莫：科马拉仍在说话",
+  "subtitle": "A story after Pedro Páramo",
+  "saveVersion": 1,
+  "startChapter": "chapter_1_descent",
+  "startMap": "comala",
+  "chapters": [
+    {
+      "id": "chapter_1_descent",
+      "title": "第一章 · 下坡路",
+      "dialogue": ["prologue_mothers_wish", "abundio_road", "eduviges_house", "damiana_street", "renteria_confession", "dorotea_grave"],
+      "maps": ["comala"]
+    }
+  ],
+  "content": {
+    "dialogues": ["dialogue/chapter1.json", "dialogue/endings.json"],
+    "events": ["events/chapter1.json"],
+    "characters": ["characters/chapter1.json"],
+    "items": ["items/chapter1.json"],
+    "memories": ["memories/chapter1.json"],
+    "quests": ["quests/chapter1.json"],
+    "achievements": ["achievements/chapter1.json"],
+    "endings": ["endings/chapter1.json"]
+  }
+}
