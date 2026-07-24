@@ -1,13 +1,20 @@
-# 临时资源说明
+# 资源目录说明
 
-当前 Demo 已使用项目内的真实像素 PNG 素材：
+当前《佩德罗·巴拉莫：科马拉仍在说话》纵向切片主要使用代码生成的视觉与声音资源：
 
-- `sprites/characters-sheet.png`：4x4，玩家三方向行走与老人待机动画
-- `sprites/environment-sheet.png`：4x4，灯笼、水井、树木和花丛动画
-- `sprites/terrain-tiles.png`：5x1，Tiled 使用的 32x32 地块
+- `BootScene` 生成胡安、阿文迪奥、爱杜薇海斯和伦特里亚神父的像素角色纹理。
+- `ComalaMap` 使用 Phaser Graphics 绘制街道、石灰墙、空门洞、教堂、墓地、枯井与半月庄远影。
+- `src/effects/` 负责热浪、尘埃、记忆渗色和低语边缘文字。
+- `AmbientAudioSystem` 使用 Web Audio API 生成环境声和对话打字音。
 
-`maps/` 中包含可由 Tiled 打开的 JSON 地图。地图 tileset 名称必须保持为 `terrain`，
-图层中的环境对象通过 `animation` 与 `scale` 属性选择 sprite sheet 动画。
+本目录保留给后续正式原创资源：
 
-原始生成稿和 chroma 中间文件用于后续美术迭代；运行 `npm run assets:process` 可重新
-规格化为 Phaser 使用的最终尺寸。
+```text
+assets/
+├── audio/       # 获授权的环境声与声音设计
+├── effects/     # 必须使用位图时的效果纹理
+├── fonts/       # 获授权的本地字体
+└── ui/          # 正式界面纹理与图标
+```
+
+新增资源必须符合科马拉的石灰白、尘土黄、干土褐、旧金和冷灰蓝视觉体系，并记录作者、来源及授权方式。
